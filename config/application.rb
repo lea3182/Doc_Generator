@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module DocGenerator
   class Application < Rails::Application
+    config.generators do |g|     # Add this configuration http://stackoverflow.com/questions/9884033/ruby-on-rails-switch-from-test-unit-to-rspec
+    g.test_framework :rspec
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
