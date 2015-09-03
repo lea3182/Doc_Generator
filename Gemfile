@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'     # Build JSON APIs with ease.  https://github.com/ra
 gem 'paperclip', '~> 4.3.0'  # File attachement library for ActiveRecord
 gem 'prawn', '~> 2.0.2'      # PDF generator
 gem 'haml', '~> 4.0.7'
+gem 'devise'
 gem 'selenium-webdriver', '~> 2.47.1'
 gem 'sdoc', '~> 0.4.0', group: :doc  # bundle exec rake doc:rails generates the API under doc/api
 
