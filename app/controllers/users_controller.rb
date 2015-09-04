@@ -6,5 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    p "-" * 80
+    p params.inspect
   end
 end
