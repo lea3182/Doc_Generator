@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    p "-" * 80
-    p params.inspect
+   unless @user == current_user
+      redirect_to root_path
+    end
   end
 end
