@@ -1,1 +1,5 @@
-Form 
+<%= form_for :document, url:  user_documents_path do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.submit %>
+<% end %>
