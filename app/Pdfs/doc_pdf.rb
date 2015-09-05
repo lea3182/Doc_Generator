@@ -1,9 +1,7 @@
 class DocPdf < Prawn::Document
-  initialize(doc)
+  def initialize(doc)
     super()
     @doc = doc
-    text "Hello"
-    # methods
+    text "#{@doc.title}"
   end 
-  # methods
 end
