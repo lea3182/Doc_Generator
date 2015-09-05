@@ -226,9 +226,9 @@ DEPENDENCIES
   haml (~> 4.0.7)
   jbuilder (~> 2.0)
   jquery-rails
-  paperclip (~> 4.3.0)
+  paperclip
   pg
-  prawn (~> 2.0.2)
+  prawn
   pry-rails
   rails (= 4.2.2)
   rspec-rails
