@@ -7,8 +7,8 @@ gem 'uglifier', '>= 1.3.0'   # Compresses JavaScript assets
 gem 'jquery-rails'           # Uses jQuery as the JavaScript library
 gem 'turbolinks'             # Turbolinks makes following links in web app faster.  https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 2.0'     # Build JSON APIs with ease.  https://github.com/rails/jbuilder
-gem 'paperclip', '~> 4.3.0'  # File attachement library for ActiveRecord
-gem 'prawn', '~> 2.0.2'      # PDF generator
+gem 'paperclip'  # File attachement library for ActiveRecord
+gem 'prawn'      # PDF generator
 gem 'haml', '~> 4.0.7'
 gem 'devise'
 gem 'selenium-webdriver', '~> 2.47.1'
