@@ -5,3 +5,5 @@
   <% @documents.each do |document| %>
   <%= document.title %><%= link_to "View Doc", user_document_path( @user, document, format: "pdf")%>
   <% end %>
+
+
