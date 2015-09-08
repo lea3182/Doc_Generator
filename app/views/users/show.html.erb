@@ -1,9 +1,25 @@
- <h2> <%= @user.first_name %>'s Dashboard</h2>
- <li><%=link_to 'Create a Document', new_user_document_path(@user) %></li> 
-  <li><%=link_to 'Edit account', edit_user_registration_path %></li> 
-  <li><%=link_to 'Sign out', destroy_user_session_path, :method => :delete %></li> 
-  <% @documents.each do |document| %>
-  <%= document.title %><%= link_to "View Doc", user_document_path( @user, document, format: "pdf")%>
-  <% end %>
+      <h2> <%= @user.first_name %>'s Dashboard</h2>
+ <div class="container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <%=link_to 'Create a Document', new_user_document_path(@user) %>
+      <%=button_to 'Edit account', edit_user_registration_path, method: "get" %>
+      <%= button_to 'Sign out', destroy_user_session_path, :method => :delete %> 
+    </div>
+    <div class="hello col-md-9">
+      <ul>
+      <% @documents.each do |document| %>
+       <li><%= document.title %><%= link_to "View Doc", user_document_path( @user, document, format: "pdf")%></li>
+      <% end %>
+      </ul> 
+  </div>
+
+
+
+ 
+    </div>
+
+
 
 
