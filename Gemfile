@@ -10,6 +10,7 @@ gem 'turbolinks'             # Turbolinks makes following links in web app faste
 gem 'jbuilder', '~> 2.0'     # Build JSON APIs with ease.  https://github.com/rails/jbuilder
 gem 'paperclip'  # File attachement library for ActiveRecord
 gem 'prawn'      # PDF generator
+gem 'aws-sdk'
 gem 'haml', '~> 4.0.7'
 gem 'devise'
 gem 'bootstrap-sass'
