@@ -1,10 +1,22 @@
 <div class="container">
+  <div class="jumbotron">
+    <div class="page-header">
+      <h1>Welcome to DocGenerator</h1>
+    </div>
+  </div>
+</div>    <!-- container  -->
 
-<div class="row">
-  <div class="col-md-6">    
-<%= button_to "Sign In", new_user_session_path, :method => :get, class: "btn btn-primary btn-lg btn-block"%></div>
-  <div class="col-md-6">
-<%= button_to "Sign Up", new_user_registration_path, :method => :get, class: "btn btn-primary btn-lg btn-block" %></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">  
+     <%= button_to "Sign In", new_user_session_path, :method => :get, class: "btn btn-primary btn-xxl btn-block"%>
+    </div>
 
-    </div> <!-- /container -->
+
+
+    <div class="col-md-6">  
+     <%= button_to "Sign Up", new_user_registration_path, :method => :get, class: "btn btn-primary btn-xxl btn-block" %>
+    </div>
+  </div>    <!-- row -->
+</div> <!-- /container -->
 
