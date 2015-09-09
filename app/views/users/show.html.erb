@@ -1,12 +1,16 @@
-      <h2> <%= @user.first_name %>'s Dashboard</h2>
  <div class="container">
+      <h2> <%= @user.first_name %>'s Dashboard</h2>
   <div class="row">
     <div class="col-md-3">
-
-      <%=link_to 'Create a Document', new_user_document_path(@user) %>
-      <%=button_to 'Edit account', edit_user_registration_path, method: "get" %>
-      <%= button_to 'Sign out', destroy_user_session_path, :method => :delete %> 
+      <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/users/#{@user.id}">Dashboard<span class="sr-only">(current)</span></a></li>
+      <li><%=button_to 'Edit account', edit_user_registration_path, method: "get" %></li>
+      <li><%=link_to 'Create a Document', new_user_document_path(@user) %></li>
+      <li><%= button_to 'Sign out', destroy_user_session_path, :method => :delete %> </li>
     </div>
+  </div>
+</div>
     <div class="hello col-md-9">
       <ul>
       <% @documents.each do |document| %>
@@ -20,6 +24,17 @@
  
     </div>
 
+
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+        </div>
 
 
 
