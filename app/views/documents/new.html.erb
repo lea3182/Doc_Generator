@@ -1,5 +1,11 @@
 <%= form_for :document, url:  user_documents_path do |f| %>
 <%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.text_field :title %></br>
+<%= f.label :amount %>
+<%= f.text_field :amount %></br>
+<%= f.label :down_payment %>
+<%= f.text_field :down_payment %></br>
+<%= f.label :interest_rate %>
+<%= f.text_field :interest_rate %></br>
 <%= f.submit %>
 <% end %>
