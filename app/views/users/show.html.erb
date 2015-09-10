@@ -1,7 +1,39 @@
- <h2> <%= @user.first_name %>'s Dashboard</h2>
- <li><%=link_to 'Create a Document', new_user_document_path(@user) %></li> 
-  <li><%=link_to 'Edit account', edit_user_registration_path %></li> 
-  <li><%=link_to 'Sign out', destroy_user_session_path, :method => :delete %></li> 
-  <% @documents.each do |document| %>
-  <%= document.title %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><%= link_to "Dashboard", user_path(@user) %><span class="sr-only">(current)</span></a></li>
+        <li><%=link_to 'Edit account', edit_user_registration_path%></li>
+        <li><%=link_to 'Create a Document', new_user_document_path(@user) %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+      </ul>
+    </div>    <!-- col-sm-3 col-md-2 sidebar  -->
+    
+    <div class="col-sm-9 col-md-10 main ">
+      <h1 class="page-header"><%= @user.first_name %>'s Dashboard</h1>
+        <h2 class="sub-header">Documents</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Created On</th>
+                  <th>PDF</th
+                </tr>
+              </thead>
+              <tbody>
+                <% @documents.each do |document| %>
+                <tr>
+                  <td><%= document.title %></td>
+                  <td><%= document.created_at.strftime("%a %m/%d/%Y") %></td>
+                  <td><%= link_to "View Doc", user_document_path( @user, document, format: "pdf")%></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>           <!-- table-responsive -->
+    </div>             <!-- col-sm-9 -->
+  </div>            <!-- row -->
+</div>          <!-- container --> 
+
+

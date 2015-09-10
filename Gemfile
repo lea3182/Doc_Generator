@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.2.0"
 gem 'rails', '4.2.2'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'   # Use SCSS for stylesheets
@@ -11,6 +12,8 @@ gem 'paperclip'  # File attachement library for ActiveRecord
 gem 'prawn'      # PDF generator
 gem 'haml', '~> 4.0.7'
 gem 'devise'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'     # Adds the proper vendor prefixes toCSS code when it is compiled.
 gem 'selenium-webdriver', '~> 2.47.1'
 gem 'sdoc', '~> 0.4.0', group: :doc  # bundle exec rake doc:rails generates the API under doc/api
 
