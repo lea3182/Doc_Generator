@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
 
   def new
-    @document = Document.new
+    @user = User.find(params[:id])
+    @document = @user.Document.new
   end
 
   def create
