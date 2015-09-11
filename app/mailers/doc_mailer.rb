@@ -4,6 +4,6 @@ class DocMailer < ApplicationMailer
     @user = user
     @document = document
 
-    mail to: "user.email", subject: "New Document Created"
+    mail ({to: @user.email, subject: "New Document Created"})  # this syntax works
   end
 end

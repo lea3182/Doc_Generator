@@ -13,9 +13,9 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Generates errors if email is unsuccessful
+  # Necessary configurations for email functionality
   config.action_mailer.raise_delivery_errors = true
-
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
@@ -26,8 +26,6 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
- 
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

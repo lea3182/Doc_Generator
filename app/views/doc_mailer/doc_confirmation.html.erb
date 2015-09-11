@@ -1,5 +1,12 @@
-<h1>DocMailer#doc_confirmation</h1>
+<h1>Document confirmation</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/doc_mailer/doc_confirmation.html.erb
+ Hello <%= @user.first_name %>,
+
+You have created a new document. Click on link to view your document as a PDF.
+
+<%= link_to "Your PDF document", user_document_path(@user, @document) %>
 </p>
+
+Thanks!
+DocGenerator
