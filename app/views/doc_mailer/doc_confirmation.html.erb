@@ -1,12 +1,8 @@
-<h1>Document confirmation</h1>
+<p>Hello <%= @user.first_name %>,</p>
 
-<p>
- Hello <%= @user.first_name %>,
+<p>You have created a new document. Click on link to view your document as a PDF.</p>
 
-You have created a new document. Click on link to view your document as a PDF.
-
-<%= link_to "Your PDF document", user_document_path(@user, @document) %>
-</p>
+<p><%= link_to "Your PDF document", user_document_path(@user, @document) %></p>
 
 Thanks!
 DocGenerator
