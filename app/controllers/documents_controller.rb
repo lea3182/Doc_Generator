@@ -7,8 +7,11 @@ class DocumentsController < ApplicationController
 
   def create
     @user = current_user
-    @document = @user.documents.create(doc_params)
+    @document = @user.documents.new(doc_params)
+    if @document.save
+      DocMailer.doc_confirmation(current_user, @document).deliver_later
     redirect_to user_path(@user)
+  end
   end
 
   def show

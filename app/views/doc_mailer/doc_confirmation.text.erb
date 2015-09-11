@@ -1,0 +1,7 @@
+DocMailer#doc_confirmation
+<%= @user.first_name %>,
+
+You have created a new document. Click on link to view your document as a PDF.
+
+<%= link_to "Your PDF document", user_document_path(@user, @document) %>
+
