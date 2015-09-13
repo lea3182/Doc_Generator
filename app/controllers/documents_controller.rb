@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
     @user = current_user
     @document = @user.documents.new(doc_params)
     if @document.save
-      DocMailer.doc_confirmation(@user, @document).deliver
+      DocMailer.doc_confirmation(@user, @document).deliver_now
     redirect_to user_path(@user)
   end
   end
@@ -18,7 +18,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     
     respond_to do |format|
-      format.html
+      format.html 
       format.pdf do 
         pdf = DocPdf.new(@document)
         send_data pdf.render, type: 'application/pdf', 
