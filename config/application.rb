@@ -27,6 +27,13 @@ module DocGenerator
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile=false
 
+    # Not sure if this config is correct or necessary
+    config.paperclip_defaults = {         
+        :storage => :s3,
+        :s3_host_name => 's3-us-west-1.amazonaws.com'
+
+    }
+
     # AWS::S3::DEFAULT_HOST.replace "s3-us-west-1.amazonaws.com"
 
     # AWS::S3::Base.establish_connection!(
