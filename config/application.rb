@@ -30,7 +30,7 @@ module DocGenerator
     # Not sure if this config is correct or necessary
     config.paperclip_defaults = {         
         :storage => :s3,
-        :s3_host_name => 's3-us-west-1.amazonaws.com'
+        :s3_host_name => ENV["AWS_S3_REGION"]
 
     }
 
