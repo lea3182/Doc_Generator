@@ -4,11 +4,11 @@
       <ul class="nav nav-sidebar">
         <li class="active"><%= link_to "Dashboard", user_path(@user) %><span class="sr-only">(current)</span></a></li>
         <li><%=link_to 'Edit account', edit_user_registration_path%></li>
-        <li><%=link_to 'Create a Document', new_user_document_path(@user) %></li>
+        <li><%=link_to 'Create a Document', new_user_document_path(@user), { :class => 'create-link', 'data-toggle' => 'modal', 'data-target' => '#myModal'} %></li>
         <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
       </ul>
     </div>    <!-- col-sm-3 col-md-2 sidebar  -->
-    
+
     <div class="col-sm-9 col-md-10 main ">
       <h1 class="page-header"><%= @user.first_name %>'s Dashboard</h1>
         <h2 class="sub-header">Documents</h2>
@@ -18,7 +18,7 @@
                 <tr>
                   <th>Title</th>
                   <th>Created On</th>
-                  <th>PDF</th
+                  <th>PDF</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +34,8 @@
           </div>           <!-- table-responsive -->
     </div>             <!-- col-sm-9 -->
   </div>            <!-- row -->
+
+  <%= render "documents/modal" %>
 </div>          <!-- container --> 
 
 
