@@ -27,6 +27,7 @@
                   <td><%= document.title %></td>
                   <td><%= document.created_at.strftime("%a %m/%d/%Y") %></td>
                   <td><%= link_to "View Doc", user_document_path( @user, document, format: "pdf")%></td>
+                  <td><%= image_tag document.doc_pdf.url(:thumb) %>
                 </tr>
                 <% end %>
               </tbody>

@@ -26,5 +26,12 @@ module DocGenerator
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile=false
+
+    # AWS::S3::DEFAULT_HOST.replace "s3-us-west-1.amazonaws.com"
+
+    # AWS::S3::Base.establish_connection!(
+    #     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    #     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    #     )
   end
 end
