@@ -11,7 +11,7 @@ class DocumentsController < ApplicationController
     if @document.save
       DocMailer.doc_confirmation(@user, @document).deliver_now
     redirect_to user_path(@user)
-  end
+    end
   end
 
   def show

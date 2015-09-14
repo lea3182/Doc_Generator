@@ -4,7 +4,6 @@ class DocMailer < ApplicationMailer
     @user = user
     @document = document
   
-
     mail({to: @user.email, subject: "New Document Confirmation"})  # this syntax works
   end
 end
