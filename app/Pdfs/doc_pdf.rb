@@ -14,6 +14,5 @@ class DocPdf < Prawn::Document
     text "Loan Amount: #{@doc.amount}"
     text "Down Payment: #{@doc.down_payment}"
     text "Interest Rate: #{@doc.interest_rate}"
-    text "#{@doc.doc_pdf.url}"
   end
 end
