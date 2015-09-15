@@ -10,10 +10,12 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params)
 
     if @document.save
-      DocMailer.doc_confirmation(@user, @document).deliver_now
+
+    DocMailer.doc_confirmation(@user, @document).deliver_now
     redirect_to user_path(@user)
-    end
-    
+  else
+    redirect_to root_path
+  end
   end
 
   def show
