@@ -1,4 +1,5 @@
 class DocPdf < Prawn::Document
+  include Prawn::View
   attr_accessor :doc
   def initialize(doc)
     super()

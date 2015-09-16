@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  include Prawn::View
  
   def new
     @user = User.find(params[:id])
@@ -20,7 +21,7 @@ class DocumentsController < ApplicationController
      # @document.doc_pdf = File.open("#{Rails.root}/app/users/#{@document.user_id}/documents/#{@document.id}.pdf")
 
      ####################################
-     
+
     DocMailer.doc_confirmation(@user, @document).deliver_now
     redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
