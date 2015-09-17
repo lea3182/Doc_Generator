@@ -1,5 +1,4 @@
 class DocPdf < Prawn::Document
-  include Prawn::View
   attr_accessor :doc
   def initialize(doc)
     super()
@@ -19,6 +18,6 @@ class DocPdf < Prawn::Document
   end
 
   def generate
-    file_name = "users/#{@doc.user_id}/documents/#{@doc.id}.pdf"
+    file_name = "users/#{@doc.user_id}/documents/#{@doc.id.to_i}.pdf"
   end
 end

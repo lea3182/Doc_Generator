@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  include Prawn::View
+  
  
   def new
     @user = User.find(params[:id])
@@ -11,14 +11,18 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params)  #create a new document
 
     if @document.save
-    pdf = DocPdf.new(@document)
-    @document.doc_pdf_file_name = pdf.generate
-    @document.save!
+      pdf = DocPdf.new(@document)
+      @file_name = pdf.generate
+      @document.doc_pdf_file_name = @file_name
+      @document.save
+      obj = S3_BUCKET.objects["#{@file_name}"]
+      obj.write("#{@file_name} PDF")
+      @document.doc_pdf_file_name = obj.key
 
-    DocMailer.doc_confirmation(@user, @document).deliver_now
-    redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
+      DocMailer.doc_confirmation(@user, @document).deliver_now
+      redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
-    redirect_to root_path, alert: "Document did not save. Please resubmit"
+      redirect_to root_path, alert: "Document did not save. Please resubmit"
     end
   end
 
