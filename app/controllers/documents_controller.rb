@@ -11,16 +11,9 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params)  #create a new document
 
     if @document.save
-
-      ####### Experiementing ########
-   p "8" * 40
-   @document.doc_pdf_file_name = "/users/#{@document.user_id}/documents/#{@document.id}.pdf"
-  p  @document.doc_pdf_file_name
-
-    # pdf.render_file("#{Rails.root}/users/:user_id/documents/:id.pdf")
-     # @document.doc_pdf = File.open("#{Rails.root}/app/users/#{@document.user_id}/documents/#{@document.id}.pdf")
-
-     ####################################
+    pdf = DocPdf.new(@document)
+    @document.doc_pdf_file_name = pdf.generate
+    @document.save!
 
     DocMailer.doc_confirmation(@user, @document).deliver_now
     redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
@@ -38,7 +31,7 @@ class DocumentsController < ApplicationController
       format.pdf do 
         pdf = DocPdf.new(@document)
 
-        send_data pdf.render, filename: "#{Rails.root}/users/#{@document.user_id}/documents/#{@document.id}.pdf",  #not sure about this line
+         send_data pdf.render, #filename: "#{Rails.root}/users/#{@document.user_id}/documents/#{@document.id}.pdf",  #not sure about this line
                               type: 'application/pdf', 
                               disposition: "inline"
       end

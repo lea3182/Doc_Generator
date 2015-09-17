@@ -17,4 +17,8 @@ class DocPdf < Prawn::Document
     text "Down Payment: #{@doc.down_payment}"
     text "Interest Rate: #{@doc.interest_rate}"
   end
+
+  def generate
+    file_name = "users/#{@doc.user_id}/documents/#{@doc.id}.pdf"
+  end
 end

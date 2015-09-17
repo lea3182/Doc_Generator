@@ -36,11 +36,12 @@ Rails.application.configure do
     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
-  url: "/:doc_pdf/:id/:style/:basename.:extension",
-  path: ":doc_pdf/:id/:style/:basename.:extension",
+  # url: "/:doc_pdf/:id/:style/:basename.:extension",
+   path: ":basename.:extension",
   # url: "/assets/providers/:id/:style/:basename.:extension",    # where to retreive files
   # path: ":rails_root/public/assets/providers/:id/:style/:basename.:extension",  # where to save files
-  s3_host_name:'s3-us-west-1.amazonaws.com'
+   s3_host_name:'s3-us-west-1.amazonaws.com', 
+  # url: ':s3_domain_url'
 
   }
 
