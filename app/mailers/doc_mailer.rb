@@ -1,4 +1,4 @@
-cclass DocMailer < ApplicationMailer
+class DocMailer < ApplicationMailer
 
   def doc_confirmation(user, document)
     @user = user
