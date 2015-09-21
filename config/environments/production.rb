@@ -78,12 +78,14 @@ Rails.application.configure do
   config.paperclip_defaults = {
   storage: :s3,
   s3_credentials: {
-    bucket: ENV['S3_BUCKET'],
+    bucket: ENV['S3_PRODUCTION_BUCKET'],
     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
-  url: ':s3_domain_url',                                       # need to double check if this is right config for production
-  path: '/:class/:attachment/:id_partition/:style/:filename'
+    path: ":basename.:extension",   # this may be incorrect
+    s3_host_name:'s3-us-west-1.amazonaws.com',
+    url: ':s3_path_url'
+  
   }
 
   config.action_mailer.default_url_options = { :host => 'doc-generator.herokuapp.com' }
