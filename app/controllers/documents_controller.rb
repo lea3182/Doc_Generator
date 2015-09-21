@@ -6,7 +6,8 @@ class DocumentsController < ApplicationController
 
   def create
     @user = current_user
-    @document = @user.documents.new(doc_params)  
+    @document = @user.documents.new(doc_params) 
+    pdf = DocPdf.new(@document) 
       @file_name = pdf.file_name            
       @document.doc_pdf_file_name = @file_name
       if @document.save
