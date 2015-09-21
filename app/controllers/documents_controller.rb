@@ -6,16 +6,14 @@ class DocumentsController < ApplicationController
 
   def create
     @user = current_user
-    @document = @user.documents.new(doc_params)  #create a new document
-
-    if @document.save
-      pdf = DocPdf.new(@document)
-      @file_name = pdf.file_name
+    @document = @user.documents.new(doc_params)  
+      @file_name = pdf.file_name            
       @document.doc_pdf_file_name = @file_name
       @document.save
       
-      obj = S3_BUCKET.objects["#{@file_name}"]
-      obj.write("#{@file_name}")
+      # 
+      obj = S3_PRODUCTION_BUCKET.objects["#{@file_name}"]
+      obj.write("#{@file_name}")    # Writing @file_name to S3 to test connection but need to send actual PDF
       @document.doc_pdf_file_name = obj.key
 
       DocMailer.doc_confirmation(@user, @document).deliver_now
