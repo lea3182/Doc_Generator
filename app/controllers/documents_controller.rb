@@ -1,9 +1,7 @@
 class DocumentsController < ApplicationController
-  
- 
+
   def new
-    @user = User.find(params[:id])
-    @document = @user.Document.new
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -12,11 +10,12 @@ class DocumentsController < ApplicationController
 
     if @document.save
       pdf = DocPdf.new(@document)
-      @file_name = pdf.generate
+      @file_name = pdf.file_name
       @document.doc_pdf_file_name = @file_name
       @document.save
+      
       obj = S3_BUCKET.objects["#{@file_name}"]
-      obj.write("#{@file_name} PDF")
+      obj.write("#{@file_name}")
       @document.doc_pdf_file_name = obj.key
 
       DocMailer.doc_confirmation(@user, @document).deliver_now
@@ -28,18 +27,18 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
+    @doc_file = @document.doc_pdf_file_name
 
     # this only renders the new document as a pdf, not actually saved as documents.doc_pdf attachment
     respond_to do |format|
       format.html 
       format.pdf do 
         pdf = DocPdf.new(@document)
-
-         send_data pdf.render, #filename: "#{Rails.root}/users/#{@document.user_id}/documents/#{@document.id}.pdf",  #not sure about this line
+       
+         send_data pdf.render,
                               type: 'application/pdf', 
                               disposition: "inline"
       end
-
     end
   end
 
