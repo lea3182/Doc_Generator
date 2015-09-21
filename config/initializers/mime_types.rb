@@ -3,3 +3,5 @@
 
 # warning: already initialized constant Mime::PDF errors occur without unless statement
 Mime::Type.register "application/pdf", :pdf unless Mime::Type.lookup_by_extension(:pdf)
+# Mime::Type.unregister(:pdf)
+# Mime::Type.register "application/force-download", :pdf, [], %w(pdf)

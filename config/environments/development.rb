@@ -28,6 +28,22 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+
+  config.paperclip_defaults = {
+  storage: :s3,
+  s3_credentials: {
+    bucket: ENV['S3_BUCKET'],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+ 
+   path: ":basename.:extension",   # this may be incorrect
+   s3_host_name:'s3-us-west-1.amazonaws.com',
+   url: ':s3_path_url'
+
+  }
+
+# Paperclip.options[:command_path] = "/usr/local/bin/"     # not sure if this is needed
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -50,5 +66,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
 end
