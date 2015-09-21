@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
       if @document.save
       
       
-      obj = S3_PRODUCTION_BUCKET.objects["#{@file_name}"]
+      obj = S3_BUCKET.objects["#{@file_name}"]
       obj.write("#{@file_name}")    # Writing @file_name to S3 to test connection but need to send actual PDF
       @document.doc_pdf_file_name = obj.key
 
