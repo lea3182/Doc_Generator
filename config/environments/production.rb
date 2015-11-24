@@ -87,6 +87,7 @@ Rails.application.configure do
   
   }
 
+
   config.action_mailer.default_url_options = { :host => 'doc-generator.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
@@ -101,5 +102,4 @@ Rails.application.configure do
   user_name: ENV['MANDRILL_USERNAME'],
   password: ENV['MANDRILL_PASSWORD']
 
-}
 end
