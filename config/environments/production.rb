@@ -84,9 +84,7 @@ Rails.application.configure do
     path: ":basename.:extension",   # this may be incorrect
     s3_host_name:'s3-us-west-1.amazonaws.com',
     url: ':s3_path_url'
-  
   }
-
 
   config.action_mailer.default_url_options = { :host => 'doc-generator.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
@@ -101,5 +99,5 @@ Rails.application.configure do
   enable_starttls_auto: true,
   user_name: ENV['MANDRILL_USERNAME'],
   password: ENV['MANDRILL_PASSWORD']
-
+  }
 end
