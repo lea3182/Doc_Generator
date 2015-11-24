@@ -7,14 +7,11 @@ class DocumentsController < ApplicationController
   def create
     @user = current_user
     @document = @user.documents.new(doc_params) 
+    @document.save
     pdf = DocPdf.new(@document) 
     @file_name = pdf.file_name      
-    p "--" * 40 
-    p @file_name # Doc id is being set to 0 and not actual id number
-    p "--" * 40          
     @document.doc_pdf_file_name = @file_name
   
-
     if @document.save
       obj = S3_BUCKET.objects["#{@file_name}"]
       obj.write("#{@file_name}")   
