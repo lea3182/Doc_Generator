@@ -1,21 +1,23 @@
 class DocumentsController < ApplicationController
 
   def new
-    @user = User.find(params[:id])
- 
+    @user = User.find(params[:user_id])
   end
 
   def create
     @user = current_user
     @document = @user.documents.new(doc_params) 
     pdf = DocPdf.new(@document) 
-      @file_name = pdf.file_name            
-      @document.doc_pdf_file_name = @file_name
-      if @document.save
-      
-      
+    @file_name = pdf.file_name      
+    p "--" * 40 
+    p @file_name # Doc id is being set to 0 and not actual id number
+    p "--" * 40          
+    @document.doc_pdf_file_name = @file_name
+  
+
+    if @document.save
       obj = S3_BUCKET.objects["#{@file_name}"]
-      obj.write("#{@file_name}")    # Writing @file_name to S3 to test connection but need to send actual PDF
+      obj.write("#{@file_name}")   
       @document.doc_pdf_file_name = obj.key
 
       DocMailer.doc_confirmation(@user, @document).deliver_now
@@ -23,11 +25,12 @@ class DocumentsController < ApplicationController
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
     end
+
   end
 
   def show
     @document = Document.find(params[:id])
-    @doc_file = @document.doc_pdf_file_name
+    # @doc_file = @document.doc_pdf_file_name
 
     # this only renders the new document as a pdf, not actually saved as documents.doc_pdf attachment
     respond_to do |format|
