@@ -20,13 +20,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.mandrillapp.com",
     port: 587,
-    domain: "gmail.com",
-    authentication: "plain",
+    # domain: "gmail.com",
+    authentication: "login",
     enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: ENV["MANDRILL_USERNAME"],
+    password: ENV["MANDRILL_PASSWORD"]
   }
 
   config.paperclip_defaults = {
@@ -35,12 +35,10 @@ Rails.application.configure do
     bucket: ENV['S3_BUCKET'],
     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    },
- 
+  },
    path: ":basename.:extension",   # this may be incorrect
    s3_host_name:'s3-us-west-1.amazonaws.com',
    url: ':s3_path_url'
-
   }
 
 # Paperclip.options[:command_path] = "/usr/local/bin/"     # not sure if this is needed
