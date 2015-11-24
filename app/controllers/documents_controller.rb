@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
       obj.write("#{@file_name}")   
       @document.doc_pdf_file_name = obj.key
 
-      DocMailer.doc_confirmation(@user, @document).deliver_now
+      # DocMailer.doc_confirmation(@user, @document).deliver_now
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
