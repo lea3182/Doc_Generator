@@ -9,15 +9,18 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params) 
     @document.save
     pdf = DocPdf.new(@document) 
+    pdf.render_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
     @file_name = pdf.file_name      
     @document.doc_pdf_file_name = @file_name
   
     if @document.save
-      obj = S3_BUCKET.objects["#{@file_name}"]
-      obj.write("#{@file_name}")   
-      @document.doc_pdf_file_name = obj.key
+      s3 = Aws::S3::Resource.new(
+           credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
+           region: 'us-west-1')
+      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
+      File.delete("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
 
-      # DocMailer.doc_confirmation(@user, @document).deliver_now
+      DocMailer.doc_confirmation(@user, @document).deliver_now
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
@@ -27,9 +30,7 @@ class DocumentsController < ApplicationController
 
   def show
     @document = Document.find(params[:id])
-    # @doc_file = @document.doc_pdf_file_name
 
-    # this only renders the new document as a pdf, not actually saved as documents.doc_pdf attachment
     respond_to do |format|
       format.html 
       format.pdf do 
