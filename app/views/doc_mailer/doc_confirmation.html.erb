@@ -2,7 +2,9 @@
 
 <p>You have created a new document. Click on link to view your document as a PDF.</p>
 
-<p><%= link_to "Your PDF document", user_document_url(@user, @document, :format => 'pdf') %></p>  <!-- does not work as user_document_path, must use url -->
+<p><%= link_to "Your PDF document", @document.doc_pdf.url %></p>  
+
+
 
 Thanks!
 DocGenerator
