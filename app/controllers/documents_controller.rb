@@ -25,7 +25,7 @@ class DocumentsController < ApplicationController
            region: 'us-west-1')
       # s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
 
-      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("https://s3-us-west-1.amazonaws.com/docgeneratorapp/users/#{@user.id}/documents/#{@document.id}.pdf")
+      s3.bucket(ENV['S3_PRODUCTION_BUCKET']).object(@file_name).upload_file("https://s3-us-west-1.amazonaws.com/docgeneratorapp/users/#{@user.id}/documents/#{@document.id}.pdf")
       # s3.bucket(ENV['S3_PRODUCTION_BUCKET']).object(@file_name).upload_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
       File.delete("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
 
