@@ -9,7 +9,7 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params) 
     @document.save
     pdf = DocPdf.new(@document) 
-    pdf.render_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
+    pdf.render_file("#{Rails.root}/public/pdfs/#{@document.id}.pdf")
     @file_name = pdf.file_name    
     p @file_name  
     @document.doc_pdf_file_name = @file_name
@@ -17,9 +17,10 @@ class DocumentsController < ApplicationController
     if @document.save
       s3 = Aws::S3::Resource.new(
            credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
-           region: 'us-west-1')
+
       s3.bucket(ENV['S3_PRODUCTION_BUCKET']).object(@file_name).upload_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
       File.delete("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
+
       # s3 = Aws::S3::Resource.new(region:'us-west-2')
       # obj = s3.bucket('bucket-name').object('key')
       # obj.upload_file('/path/to/source/file')
