@@ -22,8 +22,8 @@ class DocumentsController < ApplicationController
            credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
            region: 'us-west-1')
 
-      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("#{Rails.root}/pdfs/#{@document.id}.pdf")
-      File.delete("#{Rails.root}/pdfs/#{@document.id}.pdf")
+      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("./app/pdfs/#{@document.id}.pdf")
+      File.delete("./app/pdfs/#{@document.id}.pdf")
 
       DocMailer.doc_confirmation(@user, @document).deliver_now
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
