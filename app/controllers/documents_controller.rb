@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class DocumentsController < ApplicationController
 
   def new

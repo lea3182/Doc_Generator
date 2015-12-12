@@ -29,10 +29,12 @@ group :development, :test do
   gem 'capybara'
 end
 
-group :development do
-  gem 'pry-rails'
-end
+# group :development do
+#   gem 'pry-rails'
+# end
 
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'pry-byebug'
