@@ -12,7 +12,8 @@ class DocumentsController < ApplicationController
     pdf = DocPdf.new(@document)
     # binding.pry 
     # p Rails.root
-    pdf.render_file("./app/pdfs/#{@document.id}.pdf")
+    # pdf.render_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
+    pdf.render_file("#{Rails.root}/tmp/#{@document.id}.pdf")
     @file_name = pdf.file_name    
     p @file_name  
     @document.doc_pdf_file_name = @file_name
@@ -22,8 +23,8 @@ class DocumentsController < ApplicationController
            credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
            region: 'us-west-1')
 
-      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("./app/pdfs/#{@document.id}.pdf")
-      File.delete("./app/pdfs/#{@document.id}.pdf")
+      s3.bucket(ENV['S3_BUCKET']).object(@file_name).upload_file("#{Rails.root}/tmp/#{@document.id}.pdf")
+      File.delete("#{Rails.root}/tmp/#{@document.id}.pdf")
 
       DocMailer.doc_confirmation(@user, @document).deliver_now
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
