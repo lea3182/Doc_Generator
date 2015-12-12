@@ -10,9 +10,9 @@ class DocumentsController < ApplicationController
     @document = @user.documents.new(doc_params) 
     @document.save
     pdf = DocPdf.new(@document)
-    binding.pry 
-    p Rails.root
-    pdf.render_file("#{Rails.root}/app/pdfs/#{@document.id}.pdf")
+    # binding.pry 
+    # p Rails.root
+    pdf.render_file("./app/pdfs/#{@document.id}.pdf")
     @file_name = pdf.file_name    
     p @file_name  
     @document.doc_pdf_file_name = @file_name
