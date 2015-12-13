@@ -21,7 +21,7 @@ class DocumentsController < ApplicationController
       s3.bucket(ENV['S3_BUCKET']).object(pdf.file_name).upload_file("#{Rails.root}/tmp/#{@document.id}.pdf")
       File.delete("#{Rails.root}/tmp/#{@document.id}.pdf")
 
-      DocMailer.doc_confirmation(@user, @document).deliver_now
+      # DocMailer.doc_confirmation(@user, @document).deliver_now
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
