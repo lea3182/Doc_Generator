@@ -27,8 +27,11 @@
                   <td><%= document.title %></td>
                   <td><%= document.created_at.strftime("%a %m/%d/%Y") %></td>
                   <td><%= link_to "View Local PDf", user_document_path( @user, document, format: "pdf")%></td>
-                  <td><%= link_to "View S3", document.doc_pdf.url%></td> 
+                  <td><%= link_to "View S3", document.doc_pdf.url %></td> 
+                  <td><%= document.doc_pdf.url %></td>
+                
                 </tr>
+                
                 <% end %>
               </tbody>
             </table>

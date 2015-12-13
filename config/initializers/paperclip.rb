@@ -7,3 +7,7 @@
   # path: ":rails_root/public/doc_pdf/:id/:style/:basename.:extension" #where to save the file 
   # :url => "/assets/providers/:id/:style/:basename.:extension",
   # :path => ":rails_root/public/assets/providers/:id/:style/:basename.:extension"
+
+  Paperclip.interpolates :user_id do |attachment, style|
+    attachment.instance.user_id
+  end
