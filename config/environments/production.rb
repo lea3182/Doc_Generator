@@ -86,7 +86,7 @@ Rails.application.configure do
     url: ':s3_path_url'
   }
 
-  config.action_mailer.default_url_options = { :host => 'doc-generator.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => "http://doc-generator.herokuapp.com" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
