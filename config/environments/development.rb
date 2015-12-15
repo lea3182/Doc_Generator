@@ -13,7 +13,18 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Necessary configurations for email functionality
+  config.paperclip_defaults = {
+  storage: :s3,
+  s3_credentials: {
+    bucket: ENV['S3_BUCKET'],
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  },
+   s3_host_name:'s3-us-west-1.amazonaws.com',    
+   path: 'users/:user_id/:class/:filename',     # where to retrieve the files
+   url: ':s3_path_url'                          # where to save the file
+  }
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
@@ -27,18 +38,6 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: ENV["MANDRILL_USERNAME"],
     password: ENV["MANDRILL_PASSWORD"]
-  }
-
-  config.paperclip_defaults = {
-  storage: :s3,
-  s3_credentials: {
-    bucket: ENV['S3_BUCKET'],
-    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-  },
-   s3_host_name:'s3-us-west-1.amazonaws.com',    
-   path: 'users/:user_id/:class/:filename',     # where to retrieve the files
-   url: ':s3_path_url'                          # where to save the file
   }
 
   # Print deprecation notices to the Rails logger.

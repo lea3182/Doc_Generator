@@ -83,13 +83,13 @@ Rails.application.configure do
     },
     s3_host_name:'s3-us-west-1.amazonaws.com',
     path: 'users/:user_id/:class/:filename',     # where to retrieve the files
-    url: ':s3_path_url'
+    url: ':s3_path_url'                          # where to save the file
   }
 
   config.action_mailer.default_url_options = { :host => "http://doc-generator.herokuapp.com" }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
   address: "stmp.mandrillapp.com",

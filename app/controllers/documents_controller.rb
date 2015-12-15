@@ -25,7 +25,6 @@ class DocumentsController < ApplicationController
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
     end
-
   end
 
   def show
