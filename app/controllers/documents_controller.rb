@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
     if @document.save
       s3 = Aws::S3::Resource.new(
        credentials: Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY']),
-       region: 'us-west-1')
+       region: ENV['AWS_S3_REGION'])
 
       s3.bucket(ENV['S3_BUCKET']).object(pdf.file_name).upload_file("#{Rails.root}/public/#{@document.id}.pdf")
       File.delete("#{Rails.root}/public/#{@document.id}.pdf")
