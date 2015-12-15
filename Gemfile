@@ -8,16 +8,18 @@ gem 'uglifier', '>= 1.3.0'   # Compresses JavaScript assets
 gem 'jquery-rails'           # Uses jQuery as the JavaScript library
 gem 'turbolinks'             # Turbolinks makes following links in web app faster.  https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 2.0'     # Build JSON APIs with ease.  https://github.com/rails/jbuilder
-gem 'prawn'      # PDF generator
-# gem 'aws-sdk', '< 2.0'
+gem 'prawn'                  # PDF generator
 gem 'aws-sdk', '~> 2'
-gem 'paperclip'  # File attachement library for ActiveRecord
+gem 'paperclip'              # File attachement library for ActiveRecord
 gem 'haml', '~> 4.0.7'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'     # Adds the proper vendor prefixes toCSS code when it is compiled.
 gem 'selenium-webdriver', '~> 2.47.1'
 gem 'sdoc', '~> 0.4.0', group: :doc  # bundle exec rake doc:rails generates the API under doc/api
+gem 'pry-byebug'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 
 group :development, :test do
@@ -29,14 +31,6 @@ group :development, :test do
   gem 'capybara'
 end
 
-# group :development do
-#   gem 'pry-rails'
-# end
-
 group :production do
   gem 'rails_12factor'
 end
-
-gem 'pry-byebug'
-gem 'better_errors'
-gem 'binding_of_caller'
