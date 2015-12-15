@@ -36,12 +36,11 @@ Rails.application.configure do
     access_key_id: ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   },
-   # path: ":basename.:extension",   # this may be incorrect
-   s3_host_name:'s3-us-west-1.amazonaws.com',
-   url: ':s3_path_url'
+   s3_host_name:'s3-us-west-1.amazonaws.com',    
+   path: 'users/:user_id/:class/:filename',     # where to retrieve the files
+   url: ':s3_path_url'                          # where to save the file
   }
 
-# Paperclip.options[:command_path] = "/usr/local/bin/"     # not sure if this is needed
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
