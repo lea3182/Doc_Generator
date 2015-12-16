@@ -85,7 +85,6 @@ Rails.application.configure do
     path: 'users/:user_id/:class/:filename',     # where to retrieve the files
     url: ':s3_path_url'                          # where to save the file
   }
-  Rails.application.routes.default_url_options[:host] = "doc-generator.herokuapp.com"
   config.action_mailer.default_url_options = { :host => "doc-generator.herokuapp.com" }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
@@ -94,11 +93,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address: "smtp.mandrillapp.com",
   port: 587,
-  domain: 'doc-generator.herokuapp.com',  # is it heroku or herokuapp
+  domain: 'doc-generator.herokuapp.com', 
   authentication: :plain,
   enable_starttls_auto: true,
   user_name: ENV['MANDRILL_USERNAME'],
   password: ENV['MANDRILL_APIKEY']
   }
-  ActionMailer::Base.delivery_method = :smtp
 end
