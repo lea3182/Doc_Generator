@@ -34,10 +34,10 @@ Rails.application.configure do
     address: "smtp.mandrillapp.com",
     port: 587,
     # domain: "gmail.com",
-    authentication: "login",
+    authentication: :plain,
     enable_starttls_auto: true,
     user_name: ENV["MANDRILL_USERNAME"],
-    password: ENV["MANDRILL_PASSWORD"]
+    password: ENV["MANDRILL_APIKEY"]
   }
 
   # Print deprecation notices to the Rails logger.
