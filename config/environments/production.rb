@@ -82,9 +82,10 @@ Rails.application.configure do
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
     s3_host_name:'s3-us-west-1.amazonaws.com',
-    path: 'users/:user_id/:class/:filename',     # where to retrieve the files
-    url: ':s3_path_url'                          # where to save the file
+    path: 'users/:user_id/:class/:filename',    
+    url: ':s3_path_url'                          
   }
+
   config.action_mailer.default_url_options = { :host => "doc-generator.herokuapp.com" }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
