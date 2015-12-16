@@ -100,4 +100,5 @@ Rails.application.configure do
   user_name: ENV['MANDRILL_USERNAME'],
   password: ENV['MANDRILL_APIKEY']
   }
+  ActionMailer::Base.delivery_method = :smtp
 end
