@@ -1,47 +1,32 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active"><%= link_to "Dashboard", user_path(@user) %><span class="sr-only">(current)</span></a></li>
-        <li><%=link_to 'Edit account', edit_user_registration_path%></li>
-        <li><%=link_to 'Create a Document', new_user_document_path(@user), { :class => 'create-link', 'data-toggle' => 'modal', 'data-target' => '#myModal'} %></li>
-        <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-      </ul>
-    </div>    <!-- col-sm-3 col-md-2 sidebar  -->
-
-    <div class="col-sm-9 col-md-10 main ">
-      <h1 class="page-header"><%= @user.first_name %>'s Dashboard</h1>
-        <h2 class="sub-header">Documents</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Created On</th>
-                  <th>PDF</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @documents.each do |document| %>
-                <tr>
-                  <td><%= document.title %></td>
-                  <td><%= document.created_at.strftime("%a %m/%d/%Y") %></td>
-                  <td><%= link_to "View Local PDf", user_document_path( @user, document, format: "pdf")%></td>
-                  <td><%= link_to "View S3", document.doc_pdf.url %></td> 
-                  <td><%= document.doc_pdf.url %></td>
-                
-                </tr>
-                
-                <% end %>
-              </tbody>
-            </table>
-          </div>           <!-- table-responsive -->
-    </div>             <!-- col-sm-9 -->
-  </div>            <!-- row -->
-
+  <h1 class="page-header"><%= @user.first_name %>'s Dashboard</h1>
+  <%=link_to 'Create a Document', new_user_document_path(@user), { :method => :get, :class => ' btn btn-success btn-pull-right create-link', 'data-toggle' => 'modal', 'data-target' => '#myModal'} %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><h4>Loan Title</h4></th>
+          <th><h4>Loan Amount</h4></th>
+          <th><h4>Down Payment</h4></th>
+          <th><h4>Interest Rate</h4></th>
+          <th><h4>View PDF</h4></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+          <tr>
+            <td><%= document.title %></td>
+            <td><%= document.amount %></td>
+            <td><%= document.down_payment %></td>
+            <td><%= document.interest_rate %></td>
+            <td ><%= link_to '<i class="fa fa-file-pdf-o fa-2x"></i>'.html_safe, document.doc_pdf.url %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>           <!-- table-responsive -->
   <%= render "documents/modal" %>
 </div>          <!-- container --> 
-
 
 
 
