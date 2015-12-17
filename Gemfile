@@ -20,6 +20,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc  # bundle exec rake doc:rails generates the 
 gem 'pry-byebug'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'font-awesome-rails'
 
 
 group :development, :test do
