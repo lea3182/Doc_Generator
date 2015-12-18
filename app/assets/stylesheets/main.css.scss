@@ -1,5 +1,5 @@
 body {
-background: gray
+background: white;
  }
 
  ul, ol {                 
@@ -80,12 +80,29 @@ background: gray
     text-align: left;
  }
 
-//  .jumbotron {
-//   background: url("background_image.jpg");
-//   background-size: cover;
-//   height: 600px;
-//  }
 
-// .white {
-//   color: white;
-// }
+.navbar {
+  margin-bottom: 0px;
+  background-color: #2B6891;
+}
+ .jumbotron {
+  background: url("background_image.jpg");
+  background-size: cover;
+  height: 600px;
+ }
+
+.white {
+  color: white;
+}
+
+.left_margin {
+  margin-left: 40px;
+}
+
+#project_description {
+
+}
+
+.navbar-nav > li > a {
+  color: white;
+}
