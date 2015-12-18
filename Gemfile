@@ -12,7 +12,7 @@ gem 'prawn'                  # PDF generator
 gem 'aws-sdk', '~> 2'
 gem 'paperclip'              # File attachement library for ActiveRecord
 gem 'haml', '~> 4.0.7'
-gem 'devise'
+gem 'devise'                 # Authentication
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'     # Adds the proper vendor prefixes toCSS code when it is compiled.
 gem 'selenium-webdriver', '~> 2.47.1'
@@ -33,5 +33,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem 'rails_12factor'      # Heroku integration has previously relied on using the Rails plugin system, which has been removed from Rails 4. To enable features such as static asset serving and logging on Heroku please add rails_12factor gem to your Gemfile.
 end
