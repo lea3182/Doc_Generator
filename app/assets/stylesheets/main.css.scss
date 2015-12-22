@@ -80,15 +80,15 @@ background: white;
     text-align: left;
  }
 
-
 .navbar {
   margin-bottom: 0px;
   background-color: #2B6891;
 }
- .jumbotron {
-  background: url("/images/background_image.jpg");
-  background-size: cover;
-  height: 600px;
+
+.jumbotron {
+    background: url("/images/background_image.jpg");
+    background-size: cover;
+    height: 600px;
  }
 
 .white {
@@ -100,9 +100,13 @@ background: white;
 }
 
 #project_description {
- padding: 30px;
+  padding: 30px;
 }
 
 .navbar-nav > li > a {
   color: white;
+}
+
+.nbm {
+  margin-bottom: 0px;
 }
