@@ -1,10 +1,11 @@
 <div class="container">
   <h1 class="page-header"><%= @user.first_name %>'s Dashboard</h1>
-  <%=link_to 'Create a Document', new_user_document_path(@user), { :method => :get, :class => ' btn btn-success btn pull-right create-link', 'data-toggle' => 'modal', 'data-target' => '#myModal'} %>
+  <%=link_to 'Create a Document', new_user_document_path(@user), { :class => ' btn btn-success btn pull-right create-link', 'data-toggle' => 'modal', 'data-target' => '#myModal'} %>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
+          <th><h4>Date</h4></th>
           <th><h4>Loan Title</h4></th>
           <th><h4>Loan Amount</h4></th>
           <th><h4>Down Payment</h4></th>
@@ -18,7 +19,6 @@
             <td><%= document.created_at.strftime("%m-%d-%Y") %></td>
             <td><%= document.title %></td>
             <td><%= number_to_currency(document.amount, precision: 0)%></td>
-
             <td><%= number_to_currency(document.down_payment, precision: 0) %></td>
             <td><%= number_to_percentage(document.interest_rate, precision: 2) %></td>
             <td ><%= link_to '<i class="fa fa-file-pdf-o fa-2x"></i>'.html_safe, document.doc_pdf.url %></td> 
