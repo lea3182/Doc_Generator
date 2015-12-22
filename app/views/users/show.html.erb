@@ -15,10 +15,12 @@
       <tbody>
         <% @documents.each do |document| %>
           <tr>
+            <td><%= document.created_at.strftime("%m-%d-%Y") %></td>
             <td><%= document.title %></td>
-            <td><%= document.amount %></td>
-            <td><%= document.down_payment %></td>
-            <td><%= document.interest_rate %></td>
+            <td><%= number_to_currency(document.amount, precision: 0)%></td>
+
+            <td><%= number_to_currency(document.down_payment, precision: 0) %></td>
+            <td><%= number_to_percentage(document.interest_rate, precision: 2) %></td>
             <td ><%= link_to '<i class="fa fa-file-pdf-o fa-2x"></i>'.html_safe, document.doc_pdf.url %></td> 
           </tr>
         <% end %>
