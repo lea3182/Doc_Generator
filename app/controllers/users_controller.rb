@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @documents = @user.documents.order("created_at DESC")
-
+    
    unless @user == current_user
       redirect_to root_path
     end
