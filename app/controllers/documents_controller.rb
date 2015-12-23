@@ -27,18 +27,18 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def show
-    @document = Document.find(params[:id])
+  # def show
+  #   @document = Document.find(params[:id])
 
-    respond_to do |format|
-      format.html 
-      format.pdf do 
-        pdf = DocPdf.new(@document)
+  #   respond_to do |format|
+  #     format.html 
+  #     format.pdf do 
+  #       pdf = DocPdf.new(@document)
 
-        send_data pdf.render, type: 'application/pdf', disposition: "inline"
-      end
-    end
-  end
+  #       send_data pdf.render, type: 'application/pdf', disposition: "inline"
+  #     end
+  #   end
+  # end
 
   private
 
