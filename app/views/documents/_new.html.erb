@@ -1,18 +1,17 @@
 <%= form_for :document, url: user_documents_path(@user) do |f| %>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="form-group">
-      <%= f.label :title, :class => "control-label" %>
-      <%= f.text_field :title, :class => "form-control first_input" %></br>
-      <%= f.label :amount, :class => "control-label" %>
-      <%= f.text_field :amount, :class => "form-control" %></br>
-      <%= f.label :down_payment, :class => "control-label" %>
-      <%= f.text_field :down_payment, :class => "form-control" %></br>
-      <%= f.label :interest_rate, :class => "control-label" %>
-      <%= f.text_field :interest_rate, :class => "form-control" %></br>
-      <%= f.submit class: "btn btn-primary"%>
-  </div>
-  </div>
-</div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :title, :class => "control-label" %>
+        <%= f.select :title, ["Home mortgage", "Auto loan", "School loan", "Personal loan"], { include_blank: true }, :class => "form-control" %></br>
+        <%= f.label :amount, :class => "control-label" %>
+        <%= f.text_field :amount, :class => "form-control" %></br>
+        <%= f.label :down_payment, :class => "control-label" %>
+        <%= f.text_field :down_payment, :class => "form-control" %></br>
+        <%= f.label :interest_rate, :class => "control-label" %>
+        <%= f.text_field :interest_rate, :class => "form-control" %></br>
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+    </div> 
 <% end %>
 
