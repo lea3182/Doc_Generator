@@ -24,6 +24,7 @@ class DocumentsController < ApplicationController
       redirect_to user_path(@user, @document), notice: 'Document was successfully created. Email confirmation sent'
     else
       redirect_to root_path, alert: "Document did not save. Please resubmit"
+
     end
   end
 
