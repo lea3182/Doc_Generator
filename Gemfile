@@ -21,6 +21,7 @@ gem 'pry-byebug'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'font-awesome-rails'
+gem 'awesome_print'
 
 
 group :development, :test do
